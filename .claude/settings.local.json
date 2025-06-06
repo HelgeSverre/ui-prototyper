@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:voltagent.dev)",
+      "Bash(mkdir:*)",
+      "Bash(npm run build:*)"
+    ],
+    "deny": []
+  }
+}

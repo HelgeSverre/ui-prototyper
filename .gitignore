@@ -1,0 +1,6 @@
+.idea/
+node_modules/
+.env
+
+# todo: check if i need to ignore this one.
+.voltagent/memory.db
