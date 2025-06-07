@@ -4,6 +4,12 @@ import { openai } from '@ai-sdk/openai';
 import { fileWriterTool } from '../tools/fileWriter.js';
 import { passDataTool } from '../tools/passDataTool.js';
 import type { DesignSystem } from '../types/index.js';
+import { PracticalUIRetriever } from '../retrievers/practicalUIRetriever.js';
+import { RefactoringUIRetriever } from '../retrievers/refactoringUIRetriever.js';
+
+// Create retriever instances
+const practicalUIRetriever = new PracticalUIRetriever();
+const refactoringUIRetriever = new RefactoringUIRetriever();
 
 export const designStylistAgent = new Agent({
   name: 'design-stylist',
@@ -39,5 +45,10 @@ Avoid:
 Base your design on the project's domain, target audience, and functional requirements.`,
   llm: new VercelAIProvider(),
   model: openai('gpt-4o-mini'),
-  tools: [fileWriterTool, passDataTool],
+  tools: [
+    fileWriterTool, 
+    passDataTool,
+    practicalUIRetriever,
+    refactoringUIRetriever
+  ],
 });

@@ -4,6 +4,12 @@ import { openai } from '@ai-sdk/openai';
 import { fileWriterTool } from '../tools/fileWriter.js';
 import { passDataTool } from '../tools/passDataTool.js';
 import type { MockupSpec } from '../types/index.js';
+import { PracticalUIRetriever } from '../retrievers/practicalUIRetriever.js';
+import { RefactoringUIRetriever } from '../retrievers/refactoringUIRetriever.js';
+
+// Create retriever instances
+const practicalUIRetriever = new PracticalUIRetriever();
+const refactoringUIRetriever = new RefactoringUIRetriever();
 
 export const svgComposerAgent = new Agent({
   name: 'svg-mockup-composer',
@@ -39,5 +45,10 @@ Quality standards:
 Remember: These mockups should look like polished wireframes with design applied, not rough sketches or fully detailed designs.`,
   llm: new VercelAIProvider(),
   model: openai('gpt-4o-mini'),
-  tools: [fileWriterTool, passDataTool],
+  tools: [
+    fileWriterTool, 
+    passDataTool,
+    practicalUIRetriever.tool,
+    refactoringUIRetriever.tool
+  ],
 });
