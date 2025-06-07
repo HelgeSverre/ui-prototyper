@@ -10,7 +10,7 @@ These mockups should:
 * Produce beautiful and functional SVG mockups quickly, without implementing actual code.
 
 ---
-[GoogleService-Info.plist](../../../../../Applications/PDFgear.app/Contents/Resources/GoogleService-Info.plist)
+
 ## ✅ The AI Agent System (Simplified Version)
 
 Here’s a modular breakdown of the AI agents with a clean naming convention, their responsibilities, and orchestration
