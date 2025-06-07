@@ -40,7 +40,15 @@ The codebase implements a multi-agent UI prototyping system:
 - **Agents**: `src/agents/` - Each specialized agent
 - **Tools**: `src/tools/` - File writing and inter-agent communication
 - **Types**: `src/types/` - TypeScript interfaces for data structures
+- **Retrievers**: `src/retrievers/` - UI/UX book reference system
 - **Output**: `output/` - Generated mockups and documentation
+
+### UI/UX Book References
+The Design Stylist and SVG Composer agents have access to a UI book retriever that references:
+- **Practical UI** (2nd edition) - For practical design principles
+- **Refactoring UI** - For tactical design patterns
+
+These PDFs are stored in `specs/influences/` but are not committed to git. The retriever provides page references for specific design topics.
 
 ### Technical Details
 - **TypeScript**: Strict mode, ES2022 target, NodeNext modules
