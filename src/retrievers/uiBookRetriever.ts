@@ -1,6 +1,7 @@
 import { BaseRetriever } from '@voltagent/core';
 import * as path from 'path';
 
+// TODO: make this generic so it can work with other ebooks, but lets tyr to get it working with a know good sample first ,this will likely break on other peoples computers for now anywasys.
 export class UIBookRetriever extends BaseRetriever {
   private practicalUIPath: string;
   private refactoringUIPath: string;
