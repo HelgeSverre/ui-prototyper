@@ -1,6 +1,6 @@
 # ui-prototyper
 
-An [VoltAgent](https://github.com/vercel/voltagent) application.
+An [VoltAgent](https://github.com/voltagent/voltagent) application.
 
 ## Getting Started
 
