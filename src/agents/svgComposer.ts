@@ -4,12 +4,10 @@ import { openai } from '@ai-sdk/openai';
 import { fileWriterTool } from '../tools/fileWriter.js';
 import { passDataTool } from '../tools/passDataTool.js';
 import type { MockupSpec } from '../types/index.js';
-import { PracticalUIRetriever } from '../retrievers/practicalUIRetriever.js';
-import { RefactoringUIRetriever } from '../retrievers/refactoringUIRetriever.js';
+import { UIBookRetriever } from '../retrievers/uiBookRetriever.js';
 
-// Create retriever instances
-const practicalUIRetriever = new PracticalUIRetriever();
-const refactoringUIRetriever = new RefactoringUIRetriever();
+// Create UI book retriever instance
+const uiBookRetriever = new UIBookRetriever();
 
 export const svgComposerAgent = new Agent({
   name: 'svg-mockup-composer',
@@ -48,7 +46,6 @@ Remember: These mockups should look like polished wireframes with design applied
   tools: [
     fileWriterTool, 
     passDataTool,
-    practicalUIRetriever.tool,
-    refactoringUIRetriever.tool
+    uiBookRetriever.tool
   ],
 });

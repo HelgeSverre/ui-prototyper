@@ -4,12 +4,10 @@ import { openai } from '@ai-sdk/openai';
 import { fileWriterTool } from '../tools/fileWriter.js';
 import { passDataTool } from '../tools/passDataTool.js';
 import type { DesignSystem } from '../types/index.js';
-import { PracticalUIRetriever } from '../retrievers/practicalUIRetriever.js';
-import { RefactoringUIRetriever } from '../retrievers/refactoringUIRetriever.js';
+import { UIBookRetriever } from '../retrievers/uiBookRetriever.js';
 
-// Create retriever instances
-const practicalUIRetriever = new PracticalUIRetriever();
-const refactoringUIRetriever = new RefactoringUIRetriever();
+// Create UI book retriever instance
+const uiBookRetriever = new UIBookRetriever();
 
 export const designStylistAgent = new Agent({
   name: 'design-stylist',
@@ -48,7 +46,6 @@ Base your design on the project's domain, target audience, and functional requir
   tools: [
     fileWriterTool, 
     passDataTool,
-    practicalUIRetriever,
-    refactoringUIRetriever
+    uiBookRetriever.tool
   ],
 });

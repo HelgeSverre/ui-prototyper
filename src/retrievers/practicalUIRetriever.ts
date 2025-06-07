@@ -8,8 +8,24 @@ export class PracticalUIRetriever extends BaseRetriever {
     });
   }
 
-  async retrieve(input: string): Promise<string> {
-    const query = input.toLowerCase();
+  async retrieve(input: string | any[]): Promise<string> {
+    let query = '';
+    if (typeof input === 'string') {
+      query = input;
+    } else if (input.length > 0) {
+      const lastMessage = input[input.length - 1];
+      if (typeof lastMessage.content === 'string') {
+        query = lastMessage.content;
+      } else if (Array.isArray(lastMessage.content)) {
+        // Extract text from content array
+        query = lastMessage.content
+          .filter(part => part.type === 'text')
+          .map(part => part.text)
+          .join(' ');
+      }
+    }
+    
+    query = query.toLowerCase();
     
     const relevantTopics = this.identifyRelevantTopics(query);
     
